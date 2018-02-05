@@ -1,0 +1,22 @@
+#!/bin/bash
+# Week 4 homework, Chapter 4
+# Don Yang
+# CSCI 2461-70 Computer Networking 2 - Linux
+
+# View system's partition table
+sudo fdisk -l /dev/sda
+
+# Create a directory named test
+cd
+mkdir test
+
+# Create a 32MB file in test directory 
+dd if=/dev/zero of=./test/32MB.img bs=1M count=32
+
+# Look at 32MB file, press ctrl+d to exit this
+hexdump ./test/32MB.img 
+
+mkfs -t ext4 ./test/32MB.img
+
+#list inodes for each file for the current directory
+ls -iR
